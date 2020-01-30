@@ -15,30 +15,18 @@ const assets = [
   "/images/coffee9.jpg"
 ];
 
-self.addEventListener("install", event => {
-  event.waitUntil(
+self.addEventListener("install", installEvent => {
+  installEvent.waitUntil(
     caches.open(staticDevCoffee).then(cache => {
       cache.addAll(assets);
     })
   );
 });
 
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(res => {
-      return res || fetch(event.request);
-    })
-  );
-});
-
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys
-          .filter(key => key !== staticDevCoffee)
-          .map(key => caches.delete(key))
-      );
+self.addEventListener("fetch", fetchEvent => {
+  fetchEvent.respondWith(
+    caches.match(fetchEvent.request).then(res => {
+      return res || fetch(fetchEvent.request);
     })
   );
 });
