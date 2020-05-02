@@ -13,6 +13,7 @@ In this article, we are going to build a PWA from scratch with HTML, CSS, and Ja
 - Register the Service Worker
 - Final thoughts
 - Next steps
+
 [Continue reading](https://www.ibrahima-ndaw.com/blog/how-to-build-pwa-with-javascript/)
 
 You can check it out live [here](https://devcoffee-pwa.netlify.com/).
